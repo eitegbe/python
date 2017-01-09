@@ -62,6 +62,7 @@ class LinkedList(object):
 					self.tail = current
 					break
 				current = current.getNextNode()
+		return self.head
 
 
 
