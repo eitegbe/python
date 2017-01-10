@@ -33,7 +33,7 @@ class LinkedList(object):
 			self.tail = node
 
 	def display(self):
-		if self.head is None or self.tail is None:
+		if self.head is None and self.tail is None:
 			print 'Empty'
 			return
 		else:
@@ -64,6 +64,19 @@ class LinkedList(object):
 				current = current.getNextNode()
 		return self.head
 
+	def reverseList(self):
+		if self.head is None and self.tail is None:
+			return 
+		current = self.head
+		prev = None
+		while current:
+			nextNode = current.getNextNode()
+			current.setNextNode(prev)
+			prev = current
+			current = nextNode
+		self.head = prev
+		return self.head
+
 
 
 
@@ -74,7 +87,9 @@ if __name__ == '__main__':
 	l.insertNode(3)
 	l.insertNode(10)
 	l.insertNode(111)
+	#l.display()
+	# l.removeLastNode()
+	# l.removeLastNode()
+	l.reverseList()
 	l.display()
-	l.removeLastNode()
-	l.removeLastNode()
-	l.display()
+
