@@ -88,7 +88,7 @@ if __name__ == '__main__':
 	l.insertNode(10)
 	l.insertNode(111)
 	#l.display()
-	# l.removeLastNode()
+	l.removeLastNode()
 	# l.removeLastNode()
 	l.reverseList()
 	l.display()
