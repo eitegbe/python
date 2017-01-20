@@ -12,6 +12,9 @@ class Node(object):
 	def setData(self, a):
 		self.a = a
 
+	def getData(self):
+		return self.a 
+
 	def __str__(self):
 		return 'Value is: {}'.format(self.a)
 
@@ -77,19 +80,42 @@ class LinkedList(object):
 		self.head = prev
 		return self.head
 
+	def add1(self):
+		if self.head is None:
+			return None
+
+		current = self.head
+		temp = None
+		sums = 0
+		carry = 1
+		while current is not None:
+			sums = current.getData() + carry
+			carry = 1 if sums >= 10 else 0
+			sums = sums % 10
+			current.setData(sums)
+			temp = current
+			current = current.getNextNode()
+
+		if carry > 0:
+			temp.setNextNode(Node(carry))
+
+		return self.head
+
 
 
 
 
 if __name__ == '__main__':
 	l = LinkedList()
-	l.insertNode(2)
-	l.insertNode(3)
-	l.insertNode(10)
+	l.insertNode(9)
+	l.insertNode(9)
+	l.insertNode(9)
 	l.insertNode(111)
 	#l.display()
 	l.removeLastNode()
 	# l.removeLastNode()
+	l.reverseList()
+	l.add1()
 	l.reverseList()
 	l.display()
 
