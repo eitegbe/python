@@ -45,6 +45,34 @@ class Tree(object):
 			root.setData(data)
 		return root
 
+	def iterInsert(self, data):
+		node = Node(data)
+		if self.root is None:
+			self.root = node
+		else:
+			self.root = self.iterInsertNode(self.root, data)
+
+	def iterInsertNode(self, root, data):
+		if root is None:
+			return None
+
+		current = root
+		previous = None
+		
+		while current is not None:
+			previous = current
+			if current.getData() < data:
+				current = current.getRightChild()
+			else:
+				current = current.getLeftChild()
+
+		if previous.getData() < data:
+			previous.setRightChild(Node(data))
+		else:
+			previous.setLeftChild(Node(data))
+			
+		return root
+
 	def preorder(self):
 		self.preorders(self.root)
 
@@ -58,9 +86,9 @@ class Tree(object):
 	
 if __name__=="__main__":
 	tree = Tree()
-	tree.insert(8)
-	tree.insert(11)
-	tree.insert(6)
+	tree.iterInsert(8)
+	tree.iterInsert(11)
+	tree.iterInsert(6)
 	tree.preorder()
 
 
