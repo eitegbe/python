@@ -104,6 +104,42 @@ class Tree(object):
 
 		return current.getData()
 
+	def numberOfnodes(self):
+		return self.numberNodes(self.root)
+
+	def numberNodes(self, root):
+		if root is None:
+			return 0
+
+		left = self.numberNodes(root.getLeftChild())
+		right = self.numberNodes(root.getRightChild())
+		return left + right + 1
+
+	def inorderTraversalIter(self):
+		if self.root is None:
+			return
+
+		l = []
+		current = self.root
+		while current:
+			l.append(current)
+			current = current.getLeftChild()
+
+		while len(l) > 0:
+			node = l.pop()
+			print node
+
+			if node.getRightChild:
+				node = node.getRightChild()
+
+			while node:
+				l.append(node)
+				node = node.getLeftChild()
+
+
+
+
+
 	
 if __name__=="__main__":
 	tree = Tree()
@@ -113,6 +149,8 @@ if __name__=="__main__":
 	tree.preorder()
 	print tree.findMax()
 	print tree.findMin()
+	print tree.numberOfnodes()
+	tree.inorderTraversalIter()
 
 
 

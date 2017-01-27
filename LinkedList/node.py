@@ -101,21 +101,44 @@ class LinkedList(object):
 
 		return self.head
 
+	def removeDups(self):
+		if self.head is None and self.tail is None:
+			return None
 
+		elif self.head == self.tail:
+			return self.tail
+
+		else:
+			current = self.head
+
+			while current:
+				next  = current
+				while next.getNextNode():
+					if current.getData() == next.getNextNode().getData():
+						next.setNextNode(next.getNextNode().getNextNode())
+					else:
+						next = next.getNextNode()
+				current = current.getNextNode()
+			return self.head
 
 
 
 if __name__ == '__main__':
 	l = LinkedList()
 	l.insertNode(9)
+	l.insertNode(8)
+	l.insertNode(8)
 	l.insertNode(9)
 	l.insertNode(9)
 	l.insertNode(111)
 	#l.display()
-	l.removeLastNode()
+	#l.removeLastNode()
 	# l.removeLastNode()
-	l.reverseList()
-	l.add1()
-	l.reverseList()
+	#l.reverseList()
+	#l.add1()
+	#l.reverseList()
+	#l.display()
+	l.removeDups()
 	l.display()
+
 
