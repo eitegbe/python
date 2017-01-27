@@ -83,6 +83,27 @@ class Tree(object):
 			print root
 			self.preorders(root.getLeftChild())
 			self.preorders(root.getRightChild())
+
+	def findMax(self):
+		if self.root is None:
+			return
+
+		current = self.root
+		while current.getRightChild():
+			current = current.getRightChild()
+
+		return current.getData()
+
+	def findMin(self):
+		if self.root is None:
+			return
+
+		current = self.root
+		while current.getLeftChild():
+			current = current.getLeftChild()
+
+		return current.getData()
+
 	
 if __name__=="__main__":
 	tree = Tree()
@@ -90,6 +111,8 @@ if __name__=="__main__":
 	tree.iterInsert(11)
 	tree.iterInsert(6)
 	tree.preorder()
+	print tree.findMax()
+	print tree.findMin()
 
 
 
